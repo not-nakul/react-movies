@@ -2,6 +2,7 @@ import classes from "./MovieCard.module.css";
 
 import heart from "../../assets/heart-icon.png";
 import heartFilled from "../../assets/heart-icon-filled.png";
+import placeholderPoster from "../../assets/placeholder-poster.jpg";
 
 function MovieCard({
   title,
@@ -14,6 +15,10 @@ function MovieCard({
   isFavorite,
   isTopMovie = false,
 }) {
+  function errorHandler(e) {
+    e.target.src = placeholderPoster;
+  }
+
   return (
     <div className={classes["card-container"]}>
       {!isTopMovie && (
@@ -42,7 +47,12 @@ function MovieCard({
         </>
       )}
 
-      <img src={poster} alt={title} className={classes["poster"]} />
+      <img
+        src={poster}
+        alt={title}
+        className={classes["poster"]}
+        onError={errorHandler}
+      />
 
       <div className={classes["card-overlay"]}>
         <div className={classes["card-content"]}>

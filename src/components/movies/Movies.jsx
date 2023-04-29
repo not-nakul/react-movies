@@ -33,17 +33,16 @@ function Movies() {
     const value = e.target.value;
     if (value < 0 || value > pages) return;
     setCurrentPage(value);
-    console.log(value);
   }
 
   function previousPageHandler() {
     if (currentPage === 1) return;
-    setCurrentPage((current) => current - 1);
+    setCurrentPage((current) => parseInt(current) - 1);
   }
 
   function nextPageHandler() {
     if (currentPage === pages) return;
-    setCurrentPage((current) => current + 1);
+    setCurrentPage((current) => parseInt(current) + 1);
   }
 
   useEffect(() => {
