@@ -1,0 +1,76 @@
+.shimmer-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: 450px;
+
+  border: 2px solid #917fb3;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  user-select: none;
+  cursor: pointer;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.shimmer-poster {
+  width: 100%;
+  height: 200px;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.shimmer-content {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+}
+
+.shimmer-heading {
+  height: 24px;
+  width: 100%;
+
+  margin-bottom: 1rem;
+
+  border-radius: 20px;
+
+  background-color: #e9e5ef;
+}
+
+.shimmer-heading-end {
+  height: 24px;
+  width: 40%;
+
+  margin-bottom: 2rem;
+
+  border-radius: 20px;
+
+  background-color: #e9e5ef;
+}
+
+.shimmer-text {
+  height: 8px;
+  width: 100%;
+
+  margin-bottom: 1rem;
+
+  border-radius: 10px;
+
+  background-color: #e9e5ef;
+}
+
+.shimmer-text-end {
+  height: 8px;
+  width: 50%;
+
+  margin-bottom: 1rem;
+
+  border-radius: 10px;
+
+  background-color: #e9e5ef;
+}

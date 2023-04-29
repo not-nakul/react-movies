@@ -1,0 +1,145 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.search-bar {
+  width: 50%;
+
+  padding: 0.75rem;
+
+  color: #dadeed;
+
+  outline: 2px solid transparent;
+  outline-offset: 10px;
+
+  border-radius: 100px;
+  border: 2px solid #917fb3;
+
+  transition: 0.2s all ease;
+
+  background: transparent;
+}
+
+.search-bar:focus {
+  outline: 2px solid #e9e5ef;
+  outline-offset: 0;
+}
+
+.search-bar::placeholder {
+  opacity: 50%;
+  color: #dadeed;
+}
+
+.search-icon {
+  width: 30px;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (width < 700px) {
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-icon {
+    display: none;
+  }
+}
+
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 30px;
+  height: 30px;
+
+  background-image: url("../../assets/cancel-icon.png");
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+.movies-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.pagination-container label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  user-select: none;
+}
+
+.pagination-container input {
+  padding: 0.5rem;
+
+  color: #dadeed;
+
+  outline: 2px solid transparent;
+  outline-offset: 5px;
+
+  border-radius: 100px;
+  border: 2px solid #917fb3;
+
+  transition: 0.2s all ease;
+
+  background: transparent;
+}
+
+.pagination-container input:focus {
+  outline: 2px solid #e9e5ef;
+  outline-offset: 0;
+}
+
+.pagination-container button {
+  color: #dadeed;
+  background-color: #1d1923;
+
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 0;
+
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  transition: background-color 0.2s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pagination-container button:hover {
+  background-color: #000;
+}
+
+.pagination-container button:disabled {
+  opacity: 50%;
+
+  cursor: not-allowed;
+}
