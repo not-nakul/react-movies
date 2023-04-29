@@ -1,8 +1,47 @@
 import classes from "./MovieCard.module.css";
 
-function MovieCard({ title, poster, year, type }) {
+import heart from "../../assets/heart-icon.png";
+import heartFilled from "../../assets/heart-icon-filled.png";
+
+function MovieCard({
+  title,
+  poster,
+  year,
+  type,
+  movie,
+  addToFavorites,
+  removeFromFavorites,
+  isFavorite,
+  isTopMovie = false,
+}) {
   return (
     <div className={classes["card-container"]}>
+      {!isTopMovie && (
+        <>
+          {isFavorite ? (
+            <button
+              className={classes["fav-container"]}
+              onClick={(e) => {
+                e.preventDefault();
+                removeFromFavorites(movie);
+              }}
+            >
+              {<img src={heartFilled} alt="Heart Filled" />}
+            </button>
+          ) : (
+            <button
+              className={classes["fav-container"]}
+              onClick={(e) => {
+                e.preventDefault();
+                addToFavorites(movie);
+              }}
+            >
+              {<img src={heart} alt="Heart" />}
+            </button>
+          )}
+        </>
+      )}
+
       <img src={poster} alt={title} className={classes["poster"]} />
 
       <div className={classes["card-overlay"]}>

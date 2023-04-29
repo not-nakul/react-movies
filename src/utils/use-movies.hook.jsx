@@ -21,8 +21,6 @@ export function useMovies(query, page) {
       return;
     }
 
-    console.log("making api call");
-
     const response = await fetch(
       `https://www.omdbapi.com/?apikey=c328e87b&s=${query.trim()}&page=${page}`
     );

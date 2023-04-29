@@ -68,6 +68,18 @@
   background-size: 30px;
 }
 
+.error-text {
+  display: flex;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.error-text span {
+  color: firebrick;
+}
+
 .movies-container {
   display: flex;
   justify-content: center;

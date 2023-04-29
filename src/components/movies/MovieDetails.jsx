@@ -36,8 +36,6 @@ function MovieDetails() {
     }
   }, [title]);
 
-  console.log(details);
-
   return (
     <WideContainer>
       <div className={classes["details-container"]}>
@@ -71,8 +69,8 @@ function MovieDetails() {
                 </div>
 
                 <div className={classes["genre-list"]}>
-                  {details?.Genre?.split(", ").map((genre) => (
-                    <div className={classes["genre"]}>
+                  {details?.Genre?.split(", ").map((genre, index) => (
+                    <div className={classes["genre"]} key={index}>
                       <p>{genre}</p>
                     </div>
                   ))}
@@ -84,8 +82,19 @@ function MovieDetails() {
               </header>
 
               <section>
-                <div>
-                  <h2>Cast</h2>
+                <h2>Cast</h2>
+
+                <div className={classes["cast-list"]}>
+                  <span>Actors</span>
+                  <p>{details.Actors}</p>
+                </div>
+                <div className={classes["cast-list"]}>
+                  <span>Director</span>
+                  <p>{details.Director}</p>
+                </div>
+                <div className={classes["cast-list"]}>
+                  <span>Writer</span>
+                  <p>{details.Writer}</p>
                 </div>
               </section>
             </div>

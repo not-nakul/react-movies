@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMovies } from "../../utils/use-movies.hook";
 
@@ -14,6 +14,7 @@ import searchIcon from "../../assets/search-icon.png";
 function Movies() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [favorites, setFavorites] = useState([]);
 
   function searchHandler(e) {
     const query = e.target.value;
@@ -25,8 +26,6 @@ function Movies() {
     searchQuery,
     currentPage
   );
-
-  console.log(movies);
 
   const pages = Math.ceil(totalResults / 10);
 
@@ -46,6 +45,31 @@ function Movies() {
     if (currentPage === pages) return;
     setCurrentPage((current) => current + 1);
   }
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const addToFavorites = (movie) => {
+    const newFavorites = [...favorites, movie];
+    setFavorites(newFavorites);
+  };
+
+  const removeFromFavorites = (movie) => {
+    const newFavorites = favorites.filter((fav) => fav.imdbID !== movie.imdbID);
+    setFavorites(newFavorites);
+  };
+
+  const isFavorite = (movie) => {
+    return favorites.some((fav) => fav.imdbID === movie.imdbID);
+  };
 
   return (
     <WideContainer>
@@ -67,22 +91,32 @@ function Movies() {
         />
       </div>
 
+      {searchQuery && !movies && !isLoading && (
+        <p className={classes["error-text"]}>
+          <span>*</span>No movies found for the specified search, please try
+          again!
+        </p>
+      )}
+
       {isLoading ? (
         <div className={classes["movies-container"]}>
-          {[...Array(10)].map((item) => (
-            <ShimmerCard />
+          {[...Array(10)].map((item, index) => (
+            <ShimmerCard key={index} />
           ))}
         </div>
       ) : (
         <div className={classes["movies-container"]}>
           {movies?.map((movie, index) => (
-            <Link to={`/movie/${movie.Title}`}>
+            <Link to={`/movie/${movie.Title}`} key={index}>
               <MovieCard
-                key={index}
                 title={movie.Title}
                 poster={movie.Poster}
                 year={movie.Year}
                 type={movie.Type}
+                movie={movie}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+                isFavorite={isFavorite(movie)}
               />
             </Link>
           ))}

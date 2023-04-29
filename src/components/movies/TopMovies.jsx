@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
@@ -34,14 +35,15 @@ function TopMovies() {
           450: { slidesPerView: 1.5, spaceBetween: 100 },
         }}
       >
-        {topMovies.map((movie) => (
-          <SwiperSlide>
+        {topMovies.map((movie, index) => (
+          <SwiperSlide key={index}>
             <Link to={`/movie/${movie.Title}`}>
               <MovieCard
                 title={movie.Title}
                 poster={movie.Poster}
                 year={movie.Year}
                 type={movie.Type}
+                isTopMovie={true}
               />
             </Link>
           </SwiperSlide>
