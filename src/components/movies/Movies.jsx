@@ -62,12 +62,14 @@ function Movies() {
   };
 
   const removeFromFavorites = (movie) => {
-    const newFavorites = favorites.filter((fav) => fav.imdbID !== movie.imdbID);
+    const newFavorites = favorites.filter(
+      (fav) => fav?.imdbID !== movie?.imdbID
+    );
     setFavorites(newFavorites);
   };
 
   const isFavorite = (movie) => {
-    return favorites.some((fav) => fav.imdbID === movie.imdbID);
+    return favorites.some((fav) => fav?.imdbID === movie?.imdbID);
   };
 
   return (
@@ -106,12 +108,12 @@ function Movies() {
       ) : (
         <div className={classes["movies-container"]}>
           {movies?.map((movie, index) => (
-            <Link to={`/movie/${movie.Title}`} key={index}>
+            <Link to={`/movie/${movie?.Title}`} key={index}>
               <MovieCard
-                title={movie.Title}
-                poster={movie.Poster}
-                year={movie.Year}
-                type={movie.Type}
+                title={movie?.Title}
+                poster={movie?.Poster}
+                year={movie?.Year}
+                type={movie?.Type}
                 movie={movie}
                 addToFavorites={addToFavorites}
                 removeFromFavorites={removeFromFavorites}

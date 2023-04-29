@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import WideContainer from "../UI/WideContainer";
+import ShimmerDetails from "../UI/ShimmerDetails";
 
 import classes from "./MovieDetails.module.css";
 
 import starIcon from "../../assets/star-icon.png";
-import ShimmerDetails from "../UI/ShimmerDetails";
+import placeholderPoster from "../../assets/placeholder-poster.jpg";
 
 function MovieDetails() {
   const { title } = useParams();
@@ -36,6 +37,10 @@ function MovieDetails() {
     }
   }, [title]);
 
+  function errorHandler(e) {
+    e.target.src = placeholderPoster;
+  }
+
   return (
     <WideContainer>
       <div className={classes["details-container"]}>
@@ -53,6 +58,7 @@ function MovieDetails() {
               src={details?.Poster}
               alt="Poster"
               className={classes["poster"]}
+              onError={errorHandler}
             />
 
             <div className={classes["details-content"]}>
@@ -86,15 +92,15 @@ function MovieDetails() {
 
                 <div className={classes["cast-list"]}>
                   <span>Actors</span>
-                  <p>{details.Actors}</p>
+                  <p>{details?.Actors}</p>
                 </div>
                 <div className={classes["cast-list"]}>
                   <span>Director</span>
-                  <p>{details.Director}</p>
+                  <p>{details?.Director}</p>
                 </div>
                 <div className={classes["cast-list"]}>
                   <span>Writer</span>
-                  <p>{details.Writer}</p>
+                  <p>{details?.Writer}</p>
                 </div>
               </section>
             </div>
