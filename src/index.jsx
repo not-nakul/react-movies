@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Movies from "./components/movies/Movies";
 import MovieDetails from "./components/movies/MovieDetails";
+import Favorites from "./components/movies/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/movie/:title",
         element: <MovieDetails />,
+      },
+      {
+        path: "/favorites",
+        element: <Favorites />,
       },
     ],
   },

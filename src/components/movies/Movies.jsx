@@ -10,6 +10,7 @@ import ShimmerCard from "../UI/ShimmerCard";
 import classes from "./Movies.module.css";
 
 import searchIcon from "../../assets/search-icon.png";
+import heartFilled from "../../assets/heart-icon-filled.png";
 
 function Movies() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -90,6 +91,11 @@ function Movies() {
           onChange={searchHandler}
           className={classes["search-bar"]}
         />
+        <Link to="/favorites">
+          <button className={classes["favorites-btn"]}>
+            {<img src={heartFilled} alt="Heart Filled" />}
+          </button>
+        </Link>
       </div>
 
       {searchQuery && !movies && !isLoading && (
