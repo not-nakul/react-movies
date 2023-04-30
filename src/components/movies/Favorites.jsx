@@ -16,8 +16,6 @@ function Favorites() {
     }
   }, []);
 
-  console.log(favorites);
-
   return (
     <WideContainer>
       <div className={classes["favorites"]}>
